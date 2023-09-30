@@ -1,0 +1,18 @@
+'''
+刘思瑞 2100017810
+'''
+import re
+while True:
+    try:
+        address = input()
+        if not address:
+            break
+
+        if re.search('@.*@',address) or re.match('\s*[@.]',address) or re.search('[@.]$',address) or re.search('@\.',address) or re.search('\.@',address):
+            print('NO')
+        elif re.search('@.+\.',address):
+            print('YES')
+        else:
+            print('NO')
+    except EOFError:
+        break
