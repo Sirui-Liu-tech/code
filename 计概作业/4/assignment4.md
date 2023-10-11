@@ -4,13 +4,13 @@ Updated 1641 GMT+8 Oct 5, 2023
 
 
 
-2023 fall, Complied by Hongfei Yan==（请改为同学的姓名、院系）==
+2023 fall, Complied by 刘思瑞 元培学院
 
 
 
 **说明：**
 
-1）国庆节⽉考： AC8==（请改为同学的通过数）== 。摸底题⽬都在“练习”⾥⾯，按照数字题号能找到，可以重新提交。作业中提交⾃⼰最满意版本的代码和截图。
+1）国庆节⽉考： AC8。摸底题⽬都在“练习”⾥⾯，按照数字题号能找到，可以重新提交。作业中提交⾃⼰最满意版本的代码和截图。
 
 2）请把每个题目解题思路（可选），源码Python, 或者C++/C（已经在Codeforces/Openjudge上AC），截图（包含Accepted, 学号），填写到下面作业模版中（推荐使用 typora https://typoraio.cn ，或者用word）。AC 或者没有AC，都请标上每个题目大致花费时间。
 
@@ -22,13 +22,13 @@ Updated 1641 GMT+8 Oct 5, 2023
 
 **编程环境**
 
-==（请改为同学的操作系统、编程环境等）==
+操作系统：Windows 11 22H2 22621.2283
 
-操作系统：macOS Ventura 13.4.1 (c)
+Python编程环境：Visual Studio (1.82.2); python 3.11.3
 
-Python编程环境：Spyder IDE 5.2.2, PyCharm 2023.1.4 (Professional Edition)
+C/C++编程环境：无
 
-C/C++编程环境：Mac terminal vi (version 9.0.1424), g++/gcc (Apple clang version 14.0.3, clang-1403.0.22.14.1)
+
 
 
 
@@ -68,26 +68,31 @@ math, http://cs101.openjudge.cn/practice/02701
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】 
 
-思路：==（请改为同学的思路和代码）==
+思路：
+
+直接遍历即可，但是对于更大的数目应该考虑计算所有平方和再减掉和7有关的这样可以节省很多计算量
 
 
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
-
+'''
+刘思瑞 2100017810
+'''
+n = int(input())
+sum =0
+for i in range(1,n+1):
+    if i % 7 != 0 and not('7' in str(i) ):
+        sum += i**2
+print(sum)
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
-
-
-
-
+代码运行截图 ![image-20231010151148025](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231010151148025.png)
 
 #### 02712: 细菌繁殖 
 
@@ -126,22 +131,39 @@ math, http://cs101.openjudge.cn/practice/02712
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】 
 
-思路：==（请改为同学的思路和代码）==
+思路：
 
-
+写了一个列表来计算月份，实在是很麻烦这种题。。
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
+'''
+刘思瑞 2100017810
+'''
+def culcu(t):
+    global long
+    m0 , d0 , ini , m ,d = map(int,input().split())
+    day = 0
+    if m0 == m:
+        times = d - d0
+    else:
+        for i in range(m0+1,m):
+            day += long[i]
+        times = long[m0] - d0 +day+d
+    return ini * (2 ** times)
 
+long = [0 , 31,28,31,30,31,30,31,31,30,31,30,31]
+n = int(input())
+for i in range(n):
+    print(culcu(1))
 ```
 
 
 
-代码运行截图 ==（请替换为同学的AC代码截图，至少包含有"Accepted"的截图）==
+代码运行截图 ![image-20231010152619445](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231010152619445.png)
 
 
 
@@ -180,26 +202,42 @@ math, http://cs101.openjudge.cn/practice/02753
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】 
 
-思路：==（请改为同学的思路和代码）==
+思路：
+
+用三位的列表来储存数列，节省最小的内存，不过一开始oj报了CE，好像是必须在函数前面声明全局变量？？很奇怪
 
 
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
+'''
+刘思瑞 2100017810
+'''
+f = [1 ,1 ,2]
 
+def forward(t):
+    global f
+    f = f[1:]
+    f.append(f[0]+f[1])
+
+n = int(input())
+for i in range(n):
+    a = int(input())
+    f = [1 ,1 ,2]
+    if a <= 3:
+        print(f[a-1])
+    else:
+        for j in range(a-3):
+            forward(1)
+        print(f[2])
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
-
-
-
-
+代码运行截图![image-20231010153402752](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231010153402752.png)
 
 #### 02810: 完美立方
 
@@ -241,22 +279,42 @@ Cube = 24, Triple = (12,16,20)
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】 
 
-思路：==（请改为同学的思路和代码）==
+思路：
+
+我直接按大小顺序遍历了，但是感觉处理i，j，k的范围还可以优化
 
 
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
+'''
+刘思瑞 2100017810
+'''
+import math
+def find(num):
+    result = []
+    for i in range(1,num+1):
+        for j in range(2,i):
+            for k in range(j,i):
+                rest = i**3 - j**3 -k**3
+                if rest >=k**3:
+                    for m in range(int(rest**(1/3))+2):
+                        if m**3 == rest:
+                             result.append([i,j,k,m])
+    return result
 
+n = int(input())
+re = find(n)
+for i in re:
+    print('Cube = %d, Triple = (%d,%d,%d)' %(i[0],i[1],i[2],i[3]))
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图 ![image-20231010155628475](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231010155628475.png)==
 
 
 
@@ -296,24 +354,34 @@ math, http://cs101.openjudge.cn/practice/04138
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】 
 
-思路：==（请改为同学的思路和代码）==
+思路：
 
-
+肯定是差越小积越大因此从中间遍历，筛选质数还可以优化不过数据量太小没必要
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
+'''
+刘思瑞 2100017810
+'''
+def detect(num):
+    for i in range(2,num):
+        if num % i == 0:
+            return False
+    return True
 
+num = int(input())
+for i in range(num//2,num-1):
+    if detect(i) and detect(num - i):
+        print(i*(num-i))
+        break
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
-
-
+代码运行截图![image-20231010161027225](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231010161027225.png)
 
 
 
@@ -348,22 +416,31 @@ math, http://cs101.openjudge.cn/practice/04146
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】 
 
-思路：==（请改为同学的思路和代码）==
+思路：
 
-
+直接暴力枚举了，肯定有更好的做法hhhhh
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
-
+'''
+刘思瑞 2100017810
+'''
+n = int(input())
+max = 0
+for i in range(1,n+1):
+    for j in range(1,n+1):
+        for k in range(1,n+1):
+            if (i+j)%2 == 0 and (j+k)%3 == 0 and (i+j+k)%5 == 0 and i+j+k>max:
+                max = i+j+k
+print(max)
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图 ![image-20231010161623243](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231010161623243.png)
 
 
 
@@ -408,22 +485,49 @@ implementation, http://cs101.openjudge.cn/practice/02746
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】 
 
-思路：==（请改为同学的思路和代码）==
+思路：
 
-
+在循环链表和列表之间选择了置标志位QAQ
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
+'''
+刘思瑞 2100017810
+'''
+def delete(n,m):
+    flag = [True]*n
+    j = 0
+    times = 0
+    sum = 0
+    while True:
+        if flag[j] == True:
+            sum +=1
+            if sum == m:
+                flag[j] = False
+                times += 1
+                sum = 0
+        if times == n-1:
+            break
+        if j == n-1:
+            j = 0
+        else:
+            j+=1
+    return flag.index(True) + 1
 
+
+while True:
+    n,m = map(int,input().split())
+    if [n,m] == [0,0]:
+        break
+    print(delete(n,m))
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图 ![image-20231010165624991](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231010165624991.png)
 
 
 
@@ -481,22 +585,54 @@ In the third test case, all subarrays have an even sum, so the answer is −1.
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】 
 
-思路：==（请改为同学的思路和代码）==
+思路：
 
-
+我首先想到的是全部取余数，因为0的区间是不需要考虑的这样可以节省很多时间，接下来我一开始是从非零元素开始遍历，这样的话我在test9左右就超时了，后来想到这个最长列表一定是从一端开始的，因为不可能加左边的剩余求和被整除，加右边的也被整除。
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
+'''
+刘思瑞 2100017810
+'''
+def calcu(le,x,array):
+    nonzero = []
+    for i in range(le):
+        array[i] %= x
+        if array[i] != 0:
+            nonzero.append(i)
+    sum = -1
+    if len(nonzero) ==0:
+        return sum
+    if len(nonzero) ==1:
+        return le
+    sum = nonzero[0] +1
+    nsum = 0
+    for j in range(0,len(nonzero)):
+        nsum += array[nonzero[j]]
+        if nsum % x != 0:
+            if j+1 < len(nonzero):
+                if nonzero[j+1] >sum:
+                    sum = nonzero[j+1]
+            else:
+                return le
+    return sum
 
+
+n = int(input())
+for i in range(n):
+    le , x = map(int,input().split())
+    array = list(map(int,input().split()))
+    print(max(calcu(le,x,array),calcu(le,x,array[::-1])))
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图![image-20231010222454121](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231010222454121.png)
+
+
 
 
 
@@ -506,7 +642,7 @@ In the third test case, all subarrays have an even sum, so the answer is −1.
 
 如果作业题目简单，有否额外练习题目，比如：OJ“每日选做”中每天推出的3个题目、CF、洛谷等网站题目。
 
-
+月考前面七个题目还是比较简单的，第八题我感觉我做出来纯属侥幸，还是对代码结构和题目不够熟练，我是10号ddl做的大概一共两个半小时，当然主要在最后一题上
 
 
 
