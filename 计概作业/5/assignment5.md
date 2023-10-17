@@ -82,22 +82,33 @@ YES
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】
 
-思路：==（请改为同学的思路和代码）==
+思路:
 
-
+直接相加用列表储存
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
-
+'''
+刘思瑞 2100017810
+'''
+n = int(input())
+sum = [0,0,0]
+for i in range(n):
+    li = list(map(int,input().split()))
+    for j in range(3):
+        sum[j] += li[j]
+if sum == [0]*3:
+    print('YES')
+else:
+    print('NO')
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图![image-20231013224602143](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231013224602143.png)
 
 
 
