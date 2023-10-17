@@ -158,24 +158,32 @@ YES
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】
 
-思路：==（请改为同学的思路和代码）==
+思路:
 
-
+正则表达式
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
+'''
+刘思瑞 2100017810
+'''
+import re
 
+s = input()
+if re.search('1{7}',s) or re.search('0{7}',s):
+    print('YES')
+else:
+    print('NO')
 ```
 
 
 
-代码运行截图 ==（请替换为同学的AC代码截图，至少包含有"Accepted"的截图）==
+代码运行截图 
 
-
+![image-20231017221000885](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231017221000885.png)
 
 
 
@@ -226,22 +234,31 @@ In the second test case, the fence is a regular triangle, and in the last test c
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】
 
-思路：==（请改为同学的思路和代码）==
+思路:
 
-
+外角和180
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
-
+'''
+刘思瑞 2100017810
+'''
+n = int(input())
+for i in range(n):
+    if 360 % (180 - int(input())) == 0:
+        print('YES')
+    else:
+        print('NO')
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图
+
+![image-20231017220833632](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231017220833632.png)
 
 
 
@@ -302,22 +319,38 @@ In the second sample one coin isn't enough for us, too. You can pick coins with 
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】
 
-思路：==（请改为同学的思路和代码）==
+思路:
 
-
+贪心，判断是否过半
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
-
+'''
+刘思瑞 2100017810
+'''
+n = int(input())
+coin = list(map(int,input().split()))
+coin.sort(reverse=True)
+summ = sum(coin)
+half = summ//2 
+num = 0
+sumcoin = 0
+for i in coin:
+    sumcoin += i
+    num += 1
+    if sumcoin > half:
+        break
+print(num)
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图
+
+![image-20231017220708087](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231017220708087.png)
 
 
 
@@ -370,22 +403,47 @@ Sample2 out:
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】
 
-思路：==（请改为同学的思路和代码）==
+思路:
 
+一开始我想的是先按不同首数字分组再排序，但是这样内存会超，所以还是直接冒泡排序了
 
+需要注意的是这次的冒泡排序需要与后面所有的作比较
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
-
+'''
+刘思瑞 2100017810
+'''
+#冒泡排序
+def compare(s1,s2):
+    if int(s1 + s2) > int(s2 +s1):
+        return True
+    else:
+        return False  
+n = int(input())
+number = list(input().split())
+#max number:
+for i in range(n-1):
+    for j in range(i+1,n):
+        if not compare(number[i],number[j]):
+            temp = number[j]
+            number[j] = number[i]
+            number[i] =temp
+for i in number:
+    print(i,end='')
+print(' ',end='')
+#min number:
+number.reverse()
+for i in number:
+    print(i,end='')
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图![image-20231017220447845](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231017220447845.png)
 
 
 
@@ -434,22 +492,53 @@ The given test has three numbers. The first number 4 has exactly three divisors 
 
 
 
-【张概论，中国语言文学系，2023年秋】 ==（请改为同学的姓名、院系）==
+【刘思瑞，元培物理方向，2023年秋】
 
-思路：==（请改为同学的思路和代码）==
+思路:
 
-
+欧拉筛加上平方筛选
 
 ##### 代码
 
 ```python
-# 请改为同学的代码
+'''
+刘思瑞 2100017810
+'''
+def euler(n):
+    filter, primers = [False for i in range(n + 1)], []
+    for i in range(2, n + 1):
+        if not filter[i]:
+            primers.append(i)
+        for prime in primers:
+            if i * prime > n:
+                break
+            filter[i * prime] = True
+            if i % prime == 0:
+                break
+    return filter
 
+def search(num):
+    global prime_
+    sq = int(num**(0.5))
+    if int(sq**2) != num or num == 1:
+        return 'NO'
+    if not prime_[sq]:
+        return 'YES'
+    return 'NO'
+
+n = int(input())
+num = list(map(int,input().split()))
+n = int(max(num)**(0.5))
+prime_ = euler(n)
+for i in num:
+    print(search(i))
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图
+
+![image-20231017231404840](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231017231404840.png)
 
 
 
@@ -457,9 +546,7 @@ The given test has three numbers. The first number 4 has exactly three divisors 
 
 ## 3. 学习总结和收获
 
-==如果作业题目简单，有否额外练习题目，比如：OJ“每日选做”中每天推出的3个题目、CF、洛谷等网站题目。==
-
-
+最后一题的超时实在令人头疼，最后想到了排队里面用的tf数组，应该是主要超时在a in b的计算里面了，改用列表和索引之后python过了
 
 
 
