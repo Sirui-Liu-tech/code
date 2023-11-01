@@ -17,8 +17,15 @@ queuee = list(map(int,input().split()))
 q=queue.Queue()
 for i in range(k):
     q.put(queuee[i])
-print(maxx(q),end=' ')
+maxxx = maxx(q)
+print(maxxx,end=' ')
 for i in range(k,n):
-    q.put(queuee[i])
+    tt = queuee[i]
+    q.put(tt)
     q.get()
-    print(maxx(q),end=' ')
+    if tt >= maxxx:
+        maxxx = tt
+        print(maxxx,end=' ')
+    else:
+        maxxx = maxx(q)
+        print(maxxx,end=' ')

@@ -117,18 +117,106 @@ output
 
 思路：
 
+每次判断附近是否构成2x2矩阵即可，但是代码好像写的有点太复杂了。。
+
+还有就是列表生成器会有浅拷贝的问题，要避免这个bug
+
 
 
 ##### 代码
 
 ```python
-# 
+'''
+刘思瑞 2100017810
+'''
+def bea(a,b):
+    global mat,m,n
+    if a != 0 and b!=0 and a != n-1 and b!= m-1:
+        if mat[a-1][b-1]:
+            if mat[a-1][b] and mat[a][b-1]:
+                return True
+        if mat[a-1][b+1]:
+            if mat[a][b+1] and mat[a-1][b]:
+                return True
+        if mat[a+1][b+1]:
+            if mat[a+1][b] and mat[a][b+1]:
+                return True
+        if mat[a+1][b-1]:
+            if mat[a+1][b] and mat[a][b-1]:
+                return True
+    elif a == 0:
+        if b ==0:
+            if mat[a+1][b+1]:
+                if mat[a+1][b] and mat[a][b+1]:
+                    return True
+        elif b==m-1:
+            if mat[a+1][b-1]:
+                if mat[a+1][b] and mat[a][b-1]:
+                    return True
+        else:
+            if mat[a+1][b+1]:
+                if mat[a+1][b] and mat[a][b+1]:
+                    return True
+            if mat[a+1][b-1]:
+                if mat[a+1][b] and mat[a][b-1]:
+                    return True
+    elif a == n-1:
+        if b == 0:
+            if mat[a-1][b+1]:
+                if mat[a][b+1] and mat[a-1][b]:
+                    return True
+        elif b == m-1:
+            if mat[a-1][b-1]:
+                if mat[a-1][b] and mat[a][b-1]:
+                    return True
+        else:
+            if mat[a-1][b-1]:
+                if mat[a-1][b] and mat[a][b-1]:
+                    return True
+            if mat[a-1][b+1]:
+                if mat[a][b+1] and mat[a-1][b]:
+                    return True
+    elif b == 0:
+        if mat[a-1][b+1]:
+            if mat[a][b+1] and mat[a-1][b]:
+                return True
+        if mat[a+1][b+1]:
+            if mat[a+1][b] and mat[a][b+1]:
+                return True
+    elif b == m-1:
+        if mat[a-1][b-1]:
+            if mat[a-1][b] and mat[a][b-1]:
+                return True
+        if mat[a+1][b-1]:
+            if mat[a+1][b] and mat[a][b-1]:
+                return True
+    return False
+    
 
+def sign(a,b):
+    global mat
+    mat[a][b] = True
+    return bea(a,b)
+
+j = 0
+n , m , k = map(int,input().split())
+mat = []
+for i in range(n):
+    mat.append([False]*m)
+if m != 1 and n !=1 :    
+    for i in range(k):
+        a , b = map(int,input().split())
+        if sign(a-1,b-1):
+            j = i+1
+            break
+print(j)
 ```
 
 
 
-代码运行截图 ==（至少包含有"Accepted"）==
+代码运行截图
+
+![image-20231024020254824](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231024020254824.png)
 
 
 
@@ -233,22 +321,68 @@ A*B = [
 
 思路：
 
-
+把x的非零行以及y的非零列记录下来，唯一的困难在于y是按行的顺序输入的，因此最后再进行一个排序即可
 
 ##### 代码
 
 ```python
-# 
-
+'''
+刘思瑞 2100017810
+'''
+def vecx(a,b):
+    global n
+    sum = 0
+    for i in range(n):
+        sum += a[i]*b[i]
+    return sum
+        
+n , m1 , m2 = map(int,input().split())
+a = []
+b = []
+a_arr = []
+b_arr = []
+li = [0]*n
+r , c , num = map(int,input().split())
+a.append(r)
+li[c] = num
+for i in range(m1-1):
+    r , c , num = map(int,input().split())
+    if r not in a:
+        a.append(r)
+        a_arr.append(li)
+        li = [0]*n
+    li[c] = num
+a_arr.append(li)
+r , c , num = map(int,input().split())
+b.append(c)
+li = [0]*n
+li[r] = num
+b_arr.append(li)
+for i in range(m2-1):
+    r , c , num = map(int,input().split())
+    if c not in b:
+        b.append(c)
+        b_arr.append([0]*n)
+        b_arr[-1][r] = num
+    else:
+        b_arr[b.index(c)][r] = num
+b_arr.append(li)
+for i in range(len(b)-1):
+    for j in range(len(b)-1-i):
+        if b[j] > b[j+1]:
+            b[j] , b[j+1] , b_arr[j] , b_arr[j+1] = b[j+1] , b[j] , b_arr[j+1] , b_arr[j]
+for i in a:
+    for j in b:
+        m = vecx(a_arr[a.index(i)],b_arr[b.index(j)])
+        if m:
+            print(i,j,m)
 ```
 
 
 
-代码运行截图 ==（至少包含有"Accepted"）==
+代码运行截图
 
-
-
-
+![image-20231024033446254](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231024033446254.png)
 
 #### 12560: 生存游戏
 
@@ -305,18 +439,68 @@ n行，每行m个元素，用空格隔开。
 
 思路：
 
-
+直接判断
 
 ##### 代码
 
 ```python
-# 
+'''
+刘思瑞 2100017810
+'''
+def survive(n_,m_):
+    global a,n,m
+    sum = 0
+    if n_ > 0:
+        sum += a[n_-1][m_]
+        if m_ >0:
+            sum += a[n_-1][m_-1]
+        try:
+            sum += a[n_-1][m_+1]
+        except:
+            IndexError
+    if m_ > 0:
+        sum += a[n_][m_-1]
+        try:
+            sum += a[n_+1][m_-1]
+        except:
+            IndexError
+    try:
+        sum += a[n_+1][m_]
+    except:
+        IndexError
+    try:
+        sum += a[n_+1][m_+1]
+    except:
+        IndexError
+    try:
+        sum += a[n_][m_+1]
+    except:
+        IndexError
+    return sum
 
+a = []
+n , m = map(int,input().split())
+for i in range(n):
+    a.append(list(map(int,input().split())))
+for i in range(n):
+    for j in range(m):
+        s = survive(i,j)
+        out = 0
+        if a[i][j] == 0:
+            if s == 3:
+                out = 1
+        else:
+            if s ==2 or s == 3:
+                out = 1
+        print(out,end=' ')
+    print('')
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图
+
+![image-20231024035812321](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231024035812321.png)
 
 
 
@@ -358,22 +542,39 @@ greedy/dp, http://cs101.openjudge.cn/practice/04110
 
 思路：
 
-
+先按性价比排序再贪心
 
 ##### 代码
 
 ```python
-# 
-
+'''
+刘思瑞 2100017810
+'''
+n , w0 = map(int,input().split())
+record = []
+for i in range(n):
+    v , w = map(int,input().split())
+    record.append([v/w,v,w])
+for i in range(n-1):
+    for j in range(n-1-i):
+        if record[j][0] < record[j+1][0]:
+            record[j] , record[j+1] = record[j+1] , record[j]
+sum = 0
+for i in record:
+    if i[2] < w0:
+        sum+= i[1]
+        w0 -= i[2]
+    else:
+        sum+= i[0] * w0
+        break
+print('%.1f' % sum)
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图
 
-
-
-
+![image-20231024193815202](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231024193815202.png)
 
 ## 2. 选做题目
 
@@ -387,20 +588,56 @@ matrices, http://cs101.openjudge.cn/practice/02659/
 
 思路：
 
-
+直接操作矩阵即可
 
 ##### 代码
 
 ```python
-# 
-
+'''
+刘思瑞 2100017810
+'''
+plate = []
+n,m = 0,0
+def inplem(r,c,p,f):
+    global plate,n,m
+    p = (p-1)//2
+    rmin = max(0,r-p)
+    cmin = max(0,c-p)
+    rmax = min(n-1,r+p)
+    cmax = min(m-1, c+p)
+    if f == 0:
+        for i in range(rmin,rmax+1):
+            for j in range(cmin,cmax+1):
+                plate[i][j] = False
+    else:
+        pllaa = []
+        for i in range(n):
+            pllaa.append([False]*m)
+        for i in range(rmin,rmax+1):
+            for j in range(cmin,cmax+1):
+                pllaa[i][j] = plate[i][j]
+        plate = pllaa
+    
+n , m , k = map(int,input().split())
+plate = []
+for i in range(n):
+    plate.append([True]*m)
+for i in range(k):
+    r,c,p,f = map(int,input().split())
+    inplem(r-1,c-1,p,f)
+sum = 0
+for i in plate:
+    for j in i:
+        if j:
+            sum += 1
+print(sum)
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图
 
-
+![image-20231024212615316](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231024212615316.png)
 
 
 
@@ -433,13 +670,15 @@ https://codeforces.com/problemset/problem/545/C
 
 ## 3. 学习总结和收获
 
-OJ02694:波兰表达式
+#### OJ02694:波兰表达式
 
 这题主要是递归，但是我竟然卡在了输出的部分。。后来了解了c的双精度浮点才知道输出的格式最后ac了
 
 <img src="C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231018003135164.png" alt="image-20231018003135164" style="zoom:50%;" />
 
+#### OJ26977:接雨水
 
+也是递归但是好像有更简单的做法（
 
-
+<img src="C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20231018213815038.png" alt="image-20231018213815038" style="zoom:50%;" />
 
