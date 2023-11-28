@@ -4,7 +4,7 @@ Updated 1343 GMT+8 Oct 10, 2023
 
 
 
-2023 fall, Complied by Hongfei Yan==（请改为同学的姓名、院系）==
+2023 fall, Complied by Hongfei Yan 刘思瑞 元培学院
 
 
 
@@ -20,15 +20,11 @@ Updated 1343 GMT+8 Oct 10, 2023
 
 **编程环境**
 
-==（请改为同学的操作系统、编程环境等）==
+操作系统：Windows 11 22H2 22621.2283
 
-操作系统：macOS Ventura 13.4.1 (c)
+Python编程环境：Visual Studio (1.82.2); python 3.11.3
 
-Python编程环境：Spyder IDE 5.2.2, PyCharm 2023.1.4 (Professional Edition)
-
-C/C++编程环境：Mac terminal vi (version 9.0.1424), g++/gcc (Apple clang version 14.0.3, clang-1403.0.22.14.1)
-
-
+C/C++编程环境：无
 
 ## 1. 必做题目
 
