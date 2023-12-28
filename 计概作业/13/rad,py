@@ -1,0 +1,29 @@
+import math
+
+def minimal_radar_installations(n, d, islands):
+    islands.sort(key=lambda x: x[0])
+    radar_count = 0
+    current_position = -math.inf
+    for island in islands:
+        x, y = island
+        if y > d:
+            return -1  
+        if x - y > current_position:
+            current_position = x + y
+            radar_count += 1
+        elif x + y >= current_position:
+            current_position = x + y
+    return radar_count
+
+case_number = 0
+while True:
+    n, d = map(int, input().split())
+    if n == 0 and d == 0:
+        break
+
+    case_number += 1
+    islands = [list(map(int, input().split())) for _ in range(n)]
+    result = minimal_radar_installations(n, d, islands)
+
+    print(f"Case {case_number}: {result}")
+    input()
