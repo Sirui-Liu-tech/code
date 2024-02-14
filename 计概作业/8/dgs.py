@@ -16,7 +16,7 @@ for i in range(testnum):
             release.append([hurt])
     l = len(time)
     for j in range(l-1):
-        for k in range(l-2-j):
+        for k in range(l-1-j):
             if time[k] > time[k+1]:
                 time[k] , time[k+1] , release[k] , release[k+1] = time[k+1] , time[k] , release[k+1] , release[k]
     for j in range(l):

@@ -1,4 +1,4 @@
-from bisect import bisect
+from bisect import bisect,bisect_left
 n = int(input())
 li = []
 sa = []
@@ -11,7 +11,7 @@ for i in range(n):
         sa.append(int(m[1]))
         t+=1
     if m[0] == 'del':
-        li.pop(bisect(li,[sa[d],0]))
+        li.pop(bisect_left(li,[sa[d],0]))
         d+=1
     if m[0] == 'query':
         if len(li) %2 != 0:
