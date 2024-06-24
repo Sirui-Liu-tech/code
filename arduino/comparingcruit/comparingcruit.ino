@@ -19,7 +19,7 @@ void setup() {
 
 void loop() {
   count = 0
-  for(i=0;i<500;i++){
+  for(i=0;i<5000;i++){
   readValue = analogRead(A0); 
   if(readValue>511){
     count++;
