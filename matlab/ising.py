@@ -36,7 +36,7 @@ def magnetic(m):
                 for j in i:
                         temp += sum(j)
         return temp
-        
+     
 import math
 import pygame
 import random

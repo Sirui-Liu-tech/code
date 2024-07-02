@@ -2,7 +2,7 @@
 
 Updated 1009 GMT+8 Feb 28, 2024
 
-2024 spring, Complied by ==同学的姓名、院系==
+2024 spring, Complied by 刘思瑞 元培学院
 
 
 
@@ -53,13 +53,23 @@ Updated 1009 GMT+8 Feb 28, 2024
 
 ## 2. 提交内容
 
-你的GitHub网址及截图。
+### 网址以及截图
 
+https://github.com/Sirui-Liu-tech/code/tree/main/dataandalgoism
 
+![image-20240624234100874](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20240624234100874.png)
+
+在github账号的code子文件夹下数算的存储位置和其它代码以及课程是并列的，并且数算内是每一次作业的解答，最后加入了考试的代码以及cheatingsheet
+
+### cheatingsheet
+
+![image-20240624234425515](C:\Users\86189\AppData\Roaming\Typora\typora-user-images\image-20240624234425515.png)
+
+直接讲md文件上传github，github网址自己会加载编译器来实现markdown语言的可视化
 
 ## 3. 课程总结
 
-如果愿意，请同学或多或少做一个本门课程的学习总结。便于之后师弟师妹跟进学习，也便于教师和助教改进教学。例如：分享自己的学习心得、笔记。
+这门课程作为计算概论的后续课程，很好地从题目的**解法**过度到了**算法**，并且以树和图两种非线性的结构为主，在树和图上面实现了多种算法的思想，当然和计算概论一样这门课最难的地方也是动态规划以及贪心，但是一些典型的算法例如最小生成树，堆排序这些还是为算法思想的使用提供了一些便利，在数算里面我感觉我不再纠结题目的巧妙，而是更多的关注代码占用的资源以及我的数据在计算机里面是怎么存的怎么移动的，代码的运行是怎么改变数据的结构以及性质的。
 
 
 

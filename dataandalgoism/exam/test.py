@@ -18,12 +18,12 @@ for i in s:
             stack[-1].chi.append(node)
 def preorder(node):
     output = [node.value]
-    for child in node.children:
+    for child in node.chi:
         output.extend(preorder(child))
     return ''.join(output)
 def postorder(node):
     output = []
-    for child in node.children:
+    for child in node.chi:
         output.extend(postorder(child))
     output.append(node.value)
     return ''.join(output)
